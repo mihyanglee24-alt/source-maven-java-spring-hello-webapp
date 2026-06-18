@@ -1,5 +1,4 @@
 ---
-- ho---
 - hosts: localhost
   connection: local
   tasks:
