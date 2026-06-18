@@ -34,23 +34,23 @@ pipeline {
     stage('Tag Container Image') {
       agent { label 'controller' }
       steps {
-        sh 'docker image tag myhello:v1 mihyanglee24-alt/myhello:$BUILD_NUMBER' // Tagging with build number
-        sh 'docker image tag myhello:v1 mihyanglee24-alt/myhello:latest' // Tagging with latest
+        sh 'docker image tag myhello:v1 mihyanglee24/myhello:$BUILD_NUMBER' // Tagging with build number
+        sh 'docker image tag myhello:v1 mihyanglee24/myhello:latest' // Tagging with latest
       }
     }
     stage('Push Container Image') {
       agent { label 'controller' }
       steps {
         withDockerRegistry(credentialsId: 'docker-registry-credential', url: 'https://index.docker.io/v1/') {
-          sh 'docker image push mihyanglee24-alt/myhello:$BUILD_NUMBER' // Tagging with build number
-          sh 'docker image push mihyanglee24-alt/myhello:latest' // Tagging with latest
+          sh 'docker image push mihyanglee24/myhello:$BUILD_NUMBER' // Tagging with build number
+          sh 'docker image push mihyanglee24/myhello:latest' // Tagging with latest
         }
       }
     }
     stage('Run Container') {
       agent { label 'controller' }
       steps {
-        sh 'docker container run --detach --name myhello -p 80:8080 mihyanglee24-alt/myhello:latest'
+        sh 'docker container run --detach --name myhello -p 80:8080 mihyanglee24/myhello:latest'
       }
     }
   }
