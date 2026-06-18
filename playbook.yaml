@@ -1,0 +1,12 @@
+---
+- ho---
+- hosts: localhost
+  connection: local
+  tasks:
+    - docker_container:
+       name: myhello
+       image: mihyanglee24/myhello:latest
+       state: started
+       ports:
+          - "80:8080"
+...
