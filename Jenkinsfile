@@ -11,7 +11,7 @@ pipeline {
     stage('Checkout') {
       steps {
         git branch: 'main', 
-        url: 'https://github.com/mihyanglee24-alt/cicd_test.git'
+        url: 'https://github.com/mihyanglee24-alt/source-maven-java-spring-hello-webapp.git'
       }
     }
     stage('Test Application') {
